@@ -1,14 +1,10 @@
-/* Reset & Base Styles */
+/* ================== RESET & BASE STYLES ================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-/* .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-} */
+
 body {
   font-family: "Segoe UI", Tahoma, sans-serif;
   background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
@@ -17,7 +13,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Header */
+/* ================== HEADER ================== */
 .header {
   text-align: center;
   padding: 2rem;
@@ -33,30 +29,26 @@ body {
   opacity: 0.9;
 }
 
-/* Sections */
+/* ================== SECTIONS ================== */
 .section {
   max-width: 1240px;
-  margin: auto;
+  margin: 1.5rem auto 0 auto;
   padding: 2rem;
   background: white;
-  margin-top: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transform: translateY(20px);
   opacity: 0;
   transition: all 0.6s ease-out;
 }
-
 .section h2 {
   margin-bottom: 1rem;
   color: #357abd;
 }
-
 .section p,
 .section ul {
   font-size: 1rem;
 }
-
 .section ul {
   list-style: none;
 }
@@ -64,6 +56,7 @@ body {
   padding-left: 1.5rem;
   position: relative;
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 .section ul li::before {
   content: "✔";
@@ -71,54 +64,10 @@ body {
   left: 0;
   color: #4a90e2;
 }
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  background: #357abd;
-  color: white;
-}
-
-/* Fade-in Animation */
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .header h1 {
-    font-size: 2rem;
-  }
-  .section {
-    padding: 1.5rem;
-  }
-}
-.section ul li {
-  padding-left: 1.2rem;
-}
-
-/* Hover animation for section cards */
-.section {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.section:hover {
-  transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* Hover effect for list items */
-.section ul li {
-  transition: color 0.3s ease, transform 0.2s ease;
-}
 .section ul li:hover {
   color: #4a90e2;
   transform: translateX(5px);
 }
-
-/* Hover effect for links */
 .section a {
   color: #357abd;
   text-decoration: none;
@@ -129,69 +78,106 @@ body {
   color: #1e5a9e;
   border-bottom: 2px solid #1e5a9e;
 }
+.section:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
 
-/* leaderBoard styles */
+/* ================== FOOTER ================== */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  background: #357abd;
+  color: white;
+}
+
+/* ================== FADE-IN ANIMATION ================== */
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================== LEADERBOARD ================== */
 .leaderboard {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
   border-collapse: collapse;
-  border-radius: 12px;   
+  border-radius: 12px;
 }
-
 .leaderboard th,
 .leaderboard td {
   padding: 12px 15px;
   text-align: left;
 }
-.leaderboard thead{ 
-  padding: 1rem; 
+.leaderboard thead { padding: 1rem; }
+.leaderboard th { font-size: 1.5rem; border-bottom: 2px solid #444; }
+.leaderboard td { border-bottom: 1px solid #333; }
+#leaderboard-body { padding: 1rem; }
+.rank-icon { font-size: 20px; text-align: center; width: 40px; margin-left: 1rem; }
+
+/* ================== CONTRIBUTOR CARD ================== */
+
+/* Main card container - enforce white background */
+.contributor-card {
+  background-color: #FFFFFF !important; /* force white */
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 10px 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
-.leaderboard th {
-  font-size: 1.5rem;
-  border-bottom: 2px solid #444;
+
+/* Hover effect - full card blue border and subtle lift */
+.contributor-card:hover {
+  border: 2px solid #6366f1; /* purplish-blue */
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
+  background-color: #FFFFFF !important; /* enforce white on hover */
 }
-.leaderboard td {
-  border-bottom: 1px solid #333;
+
+/* Remove all hover effects / background from inner elements */
+.contributor-info,
+.contributor-info * {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
-#leaderboard-body{
-  padding: 1rem 1rem; 
-}
-.rank-icon {
-  font-size: 20px;
-  text-align: center;
-  width: 40px;
-  margin-left: 1rem;
-}
-.contributor-info {
-  display: flex;
-  align-items: center;
-}
+
+/* Profile image */
 .contributor-info img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin-right: 10px;
+  object-fit: cover;
 }
-.name{
-  font-weight: bold;
-  font-size: 1.5rem;
+
+/* Additional info */
+.contributor-details {
+  margin-top: 12px;
+  color: #64748b;
+  font-size: 0.875rem;
 }
-.contributions {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 12px;
-  font-weight: bold;
-  text-align: center;
-  transition: transform 0.25s ease ,box-shadow 0.25s ease;
-  box-shadow: 0 4px 12px rgba(30, 33, 63, 0.05);
+
+/* Disable old contributions hover effects */
+.contributions,
+.contributions * {
+  background: transparent !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
-.contributions:hover{
-  background: #1d4ed8;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3);
+
+/* Force table row background to transparent */
+.leaderboard tbody tr,
+.leaderboard tbody tr * {
+  background-color: transparent !important;
 }
+
+/* ================== LEVEL & PROFILE LINKS ================== */
 .level {
   padding: 5px 10px;
   border-radius: 12px;
@@ -203,52 +189,31 @@ body {
   text-decoration: none;
   font-size: 18px;
 }
-/* add responsive ness */
-@media (max-width: 900px) {
-  .leaderboard{
-    max-width: 700px;
-  }
-  th:nth-child(3),
-  td:nth-child(3) {
-    display: none; /* hide contributions count column for small screens */
-  }
-}
-@media (max-width : 720px) {
-  th:nth-child(5) ,td:nth-child(5){
-    display: none;
-  }
-  .contributor-info img{
-    width: 32px;
-    height: 32px;
-  }
-}
-@media (max-width : 606px) {
-  .leaderboard{
-    max-width: 200px;
-    text-align: center;
-  }
-  th:nth-child(4) ,td:nth-child(4){
-    display: none;
-  }
-  .contributor-info img{
-    width: 30px;
-    height: 30px;
-  }
-}
 
-@media (max-width : 467px) {
-  .leaderboard{
-    max-width: 150px;
-  }
-  .contributor-info .name{
-    font-size: 1rem;
-  }
+/* ================== RESPONSIVE ================== */
+@media (max-width: 900px) {
+  .leaderboard { max-width: 700px; }
+  th:nth-child(3), td:nth-child(3) { display: none; }
 }
-@media (max-width:369px) {
-  th:nth-child(1),td:nth-child(1){
-    display: none;
-  }
-  .leaderboard{
-    max-width: 100px;
-  }
+@media (max-width: 768px) {
+  .header h1 { font-size: 2rem; }
+  .section { padding: 1.5rem; }
+  .contributor-card { padding: 16px; }
+  .contributor-info img { width: 32px; height: 32px; }
+}
+@media (max-width: 720px) {
+  th:nth-child(5), td:nth-child(5) { display: none; }
+}
+@media (max-width: 606px) {
+  .leaderboard { max-width: 200px; text-align: center; }
+  th:nth-child(4), td:nth-child(4) { display: none; }
+  .contributor-info img { width: 30px; height: 30px; }
+}
+@media (max-width: 467px) {
+  .leaderboard { max-width: 150px; }
+  .contributor-info .name { font-size: 1rem; }
+}
+@media (max-width: 369px) {
+  th:nth-child(1), td:nth-child(1) { display: none; }
+  .leaderboard { max-width: 100px; }
 }
